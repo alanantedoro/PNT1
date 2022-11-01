@@ -18,5 +18,6 @@ namespace PNT1.Context
         public DbSet<Usuario> Usuarios { get; set; }
 
         public DbSet<Item> Item { get; set; }
+
     }
 }

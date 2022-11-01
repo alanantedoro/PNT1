@@ -25,6 +25,12 @@ namespace PNT1.Controllers
             return View(await _context.Item.ToListAsync());
         }
 
+        //GET Catalogue
+        public async Task<IActionResult> Catalogue()
+        {
+            return View(await _context.Item.ToListAsync());
+        }
+
         // GET: Items/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -150,4 +156,6 @@ namespace PNT1.Controllers
             return _context.Item.Any(e => e.Titulo == id);
         }
     }
+
+
 }
