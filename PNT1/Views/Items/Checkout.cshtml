@@ -1,18 +1,17 @@
 ﻿@model IEnumerable<PNT1.Models.Item>
 
 @{
-    ViewData["Title"] = "Catalogue";
+    ViewData["Title"] = "Checkout";
 }
 
 <script src="~/js/site.js"></script>
-<h1>Catalogo</h1>
+<h1>Checkout</h1>
 
-<form method="POST">
 <table class="table">
     <thead>
         <tr>
             <th>
-                Agregar al carrito
+                Checkout del carrito
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
@@ -40,9 +39,6 @@
             {
             <tr>
                 <td>
-                    <input id="@item.Id" type="checkbox">
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
@@ -67,5 +63,4 @@
         }
         </tbody>
 </table>
-<button type="submit" onclick="validacionCatalogo()" asp-controller="Items" asp-action="Checkout">Continuar</button>
-</form>
+<button type="button" onclick="validacionCatalogo()">Continuar</button>

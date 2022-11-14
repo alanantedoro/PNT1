@@ -31,6 +31,27 @@ namespace PNT1.Controllers
             return View(await _context.Item.ToListAsync());
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout(List<int> seleccion)
+        {
+            List<Item> items = null;
+            for( int i = 0; i < seleccion.Count; i++)
+            {
+                items.Add(await _context.Item
+                .FirstOrDefaultAsync(m => m.Id == seleccion[i]));
+                
+            }
+            return View(await _context.Item.ToListAsync());
+        }
+
+        //GET Checkout
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
         // GET: Items/Details/5
         public async Task<IActionResult> Details(string id)
         {
