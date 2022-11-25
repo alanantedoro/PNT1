@@ -1,0 +1,11 @@
+﻿@model PNT1.ViewModels.CarritoViewModel
+
+@if(Model.Carrito.carritoItems.Count > 0)
+{
+    <li>
+        <a>
+            <span>  </span>
+            <span id="cart-status">@Model.Carrito.carritoItems.Count</span>
+        </a>
+    </li>
+}

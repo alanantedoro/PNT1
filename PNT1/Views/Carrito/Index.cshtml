@@ -1,0 +1,28 @@
+﻿@model PNT1.ViewModels.CarritoViewModel
+
+<h2>Carrito</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th class="text-right">Precio</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Carrito.carritoItems)
+        {
+        <tr>
+            <td class="text-center">@item.Item.Descripcion</td>
+            <td class="text-right">@item.Item.Valor.ToString("c")</td>
+            <td class="text-right"><a class="btn btn-secondary" asp-controller="Carrito" asp-action="BorrarDelCarrito" asp-route-itemId="@item.Item.Id">borrar</a></td>
+        </tr>
+        }
+    </tbody>
+    <tfoot colspan="3" class="text-right">Total</tfoot>
+    <tfoot class="text-right">@Model.CarritoTotal.ToString("c")</tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="Venta" asp-action="Checkout">Ir a pagar</a>
+</div>

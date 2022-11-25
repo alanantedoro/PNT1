@@ -6,177 +6,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PNT1.Models;
-using PNT1.Context;
+using PNT1.ViewModels;
 
 namespace PNT1.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly PNT1DatabaseContext _context;
+        private readonly IItemRepositorio _itemRepositorio;
 
-        public ItemsController(PNT1DatabaseContext context)
+        public ItemsController(IItemRepositorio itemRepositorio)
         {
-            _context = context;
+            _itemRepositorio = itemRepositorio;
         }
 
-        // GET: Items
-        public async Task<IActionResult> Index()
+        // GET: Items/List
+        public IActionResult List()
         {
-            return View(await _context.Item.ToListAsync());
+            var itemListViewModel = new ItemListViewModel();
+            itemListViewModel.Items = _itemRepositorio.GetAllItems; 
+
+            return View(itemListViewModel);
         }
 
-        //GET Catalogue
-        public async Task<IActionResult> Catalogue()
+        public IActionResult Details(int id)
         {
-            return View(await _context.Item.ToListAsync());
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Checkout(List<int> seleccion)
-        {
-            List<Item> items = null;
-            for( int i = 0; i < seleccion.Count; i++)
-            {
-                items.Add(await _context.Item
-                .FirstOrDefaultAsync(m => m.Id == seleccion[i]));
-                
-            }
-            return View(await _context.Item.ToListAsync());
-        }
-
-        //GET Checkout
-        public IActionResult Checkout()
-        {
-            return View();
-        }
-
-        // GET: Items/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
+            var item = _itemRepositorio.GetItemById(id);
+            if(item == null)
             {
                 return NotFound();
-            }
-
-            var item = await _context.Item
-                .FirstOrDefaultAsync(m => m.Titulo == id);
-            if (item == null)
+            } else
             {
-                return NotFound();
+                return View(item);
             }
-
-            return View(item);
-        }
-
-        // GET: Items/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Items/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Titulo,Id,Descripcion,Valor,Imagen,Ubicacion,FechaDeNacimiento")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(item);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(item);
-        }
-
-        // GET: Items/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var item = await _context.Item.FindAsync(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return View(item);
-        }
-
-        // POST: Items/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Titulo,Id,Descripcion,Valor,Imagen,Ubicacion,FechaDeNacimiento")] Item item)
-        {
-            if (id != item.Titulo)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(item);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ItemExists(item.Titulo))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(item);
-        }
-
-        // GET: Items/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var item = await _context.Item
-                .FirstOrDefaultAsync(m => m.Titulo == id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            return View(item);
-        }
-
-        // POST: Items/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var item = await _context.Item.FindAsync(id);
-            _context.Item.Remove(item);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ItemExists(string id)
-        {
-            return _context.Item.Any(e => e.Titulo == id);
         }
     }
-
-
 }
