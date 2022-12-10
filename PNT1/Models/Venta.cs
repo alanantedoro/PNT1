@@ -38,7 +38,7 @@ namespace PNT1.Models
         public string Ciudad { get; set; }
 
         [Display(Name = "Codigo Postal")]
-        [StringLength(6, MinimumLength =6)]
+        [StringLength(4, MinimumLength =4)]
         [Required(ErrorMessage = "Ingrese el codigo postal")]
         public string CodigoPostal { get; set; }
 

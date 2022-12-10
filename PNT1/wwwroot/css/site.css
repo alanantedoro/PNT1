@@ -1,15 +1,17 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&family=Secular+One&display=swap');
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: left;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: black;
 }
 
 .btn-primary {
@@ -19,9 +21,18 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    font-weight: bold;
+    border-color: black;
+    padding-left: 2%;
+}
+
+.nav-link {
+    color: #FF4C29 !important;
+    font-family: 'Secular One', sans-serif;
+}
+
+.navbar {
+    background-color: #334756;
 }
 
 /* Sticky footer styles
@@ -59,8 +70,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #082032;
 }
 .footer {
   position: absolute;
@@ -68,4 +80,58 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+#titulo {
+    font-family: 'Rubik Spray Paint', cursive;
+    color: #FF4C29;
+}
+
+#catalogo {
+    font-family: 'Secular One', sans-serif;
+    color: #FF4C29;
+    font-weight: normal;
+}
+
+.card-body {
+    background-color: #334756;
+}
+
+.card{
+    border: solid white;
+    border-radius: 15;
+}
+
+.card-text{
+    color:white;
+}
+
+#carrito-titulo {
+    font-family: 'Secular One', sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+.tabla-titulo {
+    font-family: 'Secular One', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.tabla-contenido {
+    font-family: 'Secular One', sans-serif;
+    text-align: center;
+    color: white !important;
+}
+
+.boton-borrar {
+    font-family: 'Secular One', sans-serif;
+    position: center;
+}
+
+
+#cart-status{
+    color: white;
 }

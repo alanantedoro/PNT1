@@ -1,19 +1,19 @@
 ﻿@model PNT1.ViewModels.ItemListViewModel
 
 
-<h1>Catalogo</h1>
+<h1 id="catalogo">Catalogo</h1>
 <div class="row row-cols-2 row-cols-md-3">
     @foreach (var item in Model.Items)
     {
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <img class="card-img-top" src="@item.Imagen" />
-                    <h2><a asp-controller="Items" asp-action="Details" asp-route-id="@item.Id">@item.Descripcion</a></h2>
-                    <h3>@item.Valor</h3>
+                    <img class="card-img-top" src="/images/music.png" />
+                    <h2><a asp-controller="Items" asp-action="Details" asp-route-id="@item.Id" class="card-text">@item.Descripcion</a></h2>
+                    <h3 class="card-text">@item.Valor</h3>
                     <div class="agregarAlCarrito">
                         <p class="button">
-                            <a class="btn btn-primary" asp-controller="Carrito" asp-action="AgregarAlCarrito" asp-route-itemId="@item.Id">Agregar al carrito</a>
+                            <a class="btn btn-dark" asp-controller="Carrito" asp-action="AgregarAlCarrito" asp-route-itemId="@item.Id">Agregar al carrito</a>
                         </p>
                     </div>
                 </div>
