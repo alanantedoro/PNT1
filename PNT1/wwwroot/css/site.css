@@ -11,7 +11,11 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: black;
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
 
 .btn-primary {
@@ -132,6 +136,29 @@ body {
 }
 
 
-#cart-status{
+#cart-status {
     color: white;
+}
+
+.details-title {
+    color: white;
+}
+
+#details-attribute {
+    color: white;
+}
+
+hr {
+    background-color: white;
+}
+
+#button-carrito:hover {
+    background-color: #FF4C29;
+    color: black;
+}
+
+#image-details {
+    width: 50px;
+    height: auto;
+    background-color: white;
 }
