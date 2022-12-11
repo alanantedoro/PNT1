@@ -1,7 +1,7 @@
 ﻿@model PNT1.ViewModels.ItemListViewModel
 
 
-<h1 id="catalogo">Catálogo</h1>
+<h1 id="catalogo">Catalogo</h1>
 <div class="row row-cols-2 row-cols-md-3">
     @foreach (var item in Model.Items)
     {
@@ -13,7 +13,7 @@
                     <h3 class="card-text">@item.Valor</h3>
                     <div class="agregarAlCarrito">
                         <p class="button">
-                            <a class="btn btn-dark" id="button-carrito" asp-controller="Carrito" asp-action="AgregarAlCarrito" asp-route-itemId="@item.Id">Agregar al carrito</a>
+                            <a class="btn btn-dark" asp-controller="Carrito" asp-action="AgregarAlCarrito" asp-route-itemId="@item.Id">Agregar al carrito</a>
                         </p>
                     </div>
                 </div>
