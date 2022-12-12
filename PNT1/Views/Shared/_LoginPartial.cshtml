@@ -3,22 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<style>
 
-    .nav-link {
-        color: #FF4C29 !important;
-        font-family: 'Secular One', sans-serif; 
-    }
-
-    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-        font-weight: bold;
-        border-color: black;
-        padding-left: 2%;
-    }
-
-
-
-</style>
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
@@ -27,7 +12,7 @@
         <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" >
             <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
         </form>
     </li>
