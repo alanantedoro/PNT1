@@ -3,6 +3,23 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+<style>
+
+    .nav-link {
+        color: #FF4C29 !important;
+        font-family: 'Secular One', sans-serif; 
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        font-weight: bold;
+        border-color: black;
+        padding-left: 2%;
+    }
+
+
+
+</style>
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {

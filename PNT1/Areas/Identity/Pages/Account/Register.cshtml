@@ -3,12 +3,28 @@
 @{
     ViewData["Title"] = "Registrate!";
 }
+ 
+ <style>
+     body {
+         margin-bottom: 60px;
+         background-color: #082032;
+     }
 
-<h1>@ViewData["Title"]</h1>
+     #titulo {
+         font-family: 'Rubik Spray Paint', cursive;
+         color: #FF4C29;
+     }
+
+     .form-syle{
+         color: white;
+     }
+
+ </style>
+<h1 id="titulo">@ViewData["Title"]</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-syle">
             <h4>Crear una cuenta.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -27,7 +43,7 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <button type="submit" class="btn btn-dark">Registrarse</button>
         </form>
     </div>
 </div>
