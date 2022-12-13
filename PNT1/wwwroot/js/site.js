@@ -4,15 +4,15 @@
 // Write your JavaScript code.
 
 
-function validacionCatalogo() {
+function carritoCheck() {
 
-    let item = document.getElementsByTagName("input");
-    let selecccion = [];
+    let size = document.getElementsByTagName("tr")
 
-    for (i = 0; i < item.length; i++) {
-        if (item[i].checked) {
-            selecccion.push(item[i].id);
-        }
-        return seleccion;
+    let len = size.length;
+
+    if (len == 1) {
+        alert("El carrito esta vacio");
+        return false;
     }
+
 }

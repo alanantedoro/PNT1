@@ -58,11 +58,6 @@ namespace PNT1.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Checkout()
-        {
-            return View();
-        }
-
 
     }
 }
